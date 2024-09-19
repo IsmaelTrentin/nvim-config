@@ -145,6 +145,8 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
 
+-- reset cursor on leave
+vim.cmd ':autocmd VimLeave * set guicursor= | call chansend(v:stderr, "\x1b[ q")'
 -- Show which line your cursor is on
 vim.opt.cursorline = true
 
@@ -546,6 +548,8 @@ require('lazy').setup({
         -- tsserver = {},
         --
 
+        jdtls = {},
+        elixirls = {},
         lua_ls = {
           -- cmd = {...},
           -- filetypes { ...},
@@ -620,6 +624,7 @@ require('lazy').setup({
         lua = { 'stylua' },
         rust = { 'rust_analyzer' },
         typescript = { 'tsserver' },
+        java = { 'jdtls' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
@@ -689,6 +694,7 @@ require('lazy').setup({
           --  This will auto-import if your LSP supports it.
           --  This will expand snippets if the LSP sent a snippet.
           ['<C-y>'] = cmp.mapping.confirm { select = true },
+          ['<Tab>'] = cmp.mapping.confirm { select = true },
 
           -- Manually trigger a completion from nvim-cmp.
           --  Generally you don't need this, because nvim-cmp will display
