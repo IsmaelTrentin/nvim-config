@@ -1,3 +1,4 @@
+local dashv2 = require 'custom.alpha-themes.dashv2'
 -- Set <space> as the leader key
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
@@ -116,7 +117,9 @@ require('lazy').setup({
   {
     'goolord/alpha-nvim',
     config = function()
-      require('alpha').setup(require('alpha.themes.dashboard').config)
+      local theme = dashv2
+
+      require('alpha').setup(theme.config)
     end,
   },
 
