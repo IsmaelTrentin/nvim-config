@@ -1,4 +1,3 @@
-local dashv2 = require 'custom.alpha-themes.dashv2'
 -- Set <space> as the leader key
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
@@ -57,6 +56,12 @@ vim.cmd ':autocmd VimLeave * set guicursor= | call chansend(v:stderr, "\x1b[ q")
 vim.opt.cursorline = true
 
 vim.opt.scrolloff = 15
+
+-- indentation
+vim.opt.expandtab = true
+vim.opt.smartindent = true
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
 
 -- [[ Keymaps ]]
 
@@ -117,13 +122,60 @@ require('lazy').setup({
   {
     'goolord/alpha-nvim',
     config = function()
+      local dashv2 = require 'custom.alpha-themes.dashv2'
       local theme = dashv2
 
       require('alpha').setup(theme.config)
     end,
   },
 
-  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+  -- status line
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    opts = {
+      options = {
+        icons_enabled = true,
+        theme = 'auto',
+        component_separators = { left = '', right = '' },
+        section_separators = { left = '', right = '' },
+        disabled_filetypes = {
+          statusline = {},
+          winbar = {},
+        },
+        ignore_focus = {},
+        always_divide_middle = true,
+        globalstatus = false,
+        refresh = {
+          statusline = 1000,
+          tabline = 1000,
+          winbar = 1000,
+        },
+      },
+      sections = {
+        lualine_a = { 'mode' },
+        lualine_b = { 'branch' },
+        lualine_c = { 'filename', 'location' },
+        lualine_x = { 'buffers' },
+        lualine_y = { 'diagnostics' },
+        lualine_z = { 'filetype' },
+      },
+      inactive_sections = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = { 'filename', 'location' },
+        lualine_x = { 'location' },
+        lualine_y = {},
+        lualine_z = {},
+      },
+      tabline = {},
+      winbar = {},
+      inactive_winbar = {},
+      extensions = {},
+    },
+  },
+
+  -- 'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
@@ -576,7 +628,9 @@ require('lazy').setup({
     main = 'ibl',
     ---@module "ibl"
     ---@type ibl.config
-    opts = {},
+    opts = {
+      indent = { char = '│' },
+    },
     config = function()
       require('ibl').setup()
     end,
@@ -585,28 +639,28 @@ require('lazy').setup({
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
-  -- { -- Collection of various small independent plugins/modules
-  --   'echasnovski/mini.nvim',
-  --   config = function()
-  --     -- Better Around/Inside textobjects
-  --     --
-  --     -- Examples:
-  --     --  - va)  - [V]isually select [A]round [)]paren
-  --     --  - yinq - [Y]ank [I]nside [N]ext [']quote
-  --     --  - ci'  - [C]hange [I]nside [']quote
-  --     require('mini.ai').setup { n_lines = 500 }
-  --
-  --     -- Add/delete/replace surroundings (brackets, quotes, etc.)
-  --     --
-  --     -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
-  --     -- - sd'   - [S]urround [D]elete [']quotes
-  --     -- - sr)'  - [S]urround [R]eplace [)] [']
-  --     require('mini.surround').setup()
-  --
-  --     -- ... and there is more!
-  --     --  Check out: https://github.com/echasnovski/mini.nvim
-  --   end,
-  -- },
+  { -- Collection of various small independent plugins/modules
+    'echasnovski/mini.nvim',
+    config = function()
+      -- Better Around/Inside textobjects
+      --
+      -- Examples:
+      --  - va)  - [V]isually select [A]round [)]paren
+      --  - yinq - [Y]ank [I]nside [N]ext [']quote
+      --  - ci'  - [C]hange [I]nside [']quote
+      require('mini.ai').setup { n_lines = 500 }
+
+      -- Add/delete/replace surroundings (brackets, quotes, etc.)
+      --
+      -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
+      -- - sd'   - [S]urround [D]elete [']quotes
+      -- - sr)'  - [S]urround [R]eplace [)] [']
+      require('mini.surround').setup()
+
+      -- ... and there is more!
+      --  Check out: https://github.com/echasnovski/mini.nvim
+    end,
+  },
 
   -- movement
   {
@@ -642,7 +696,7 @@ require('lazy').setup({
   },
 
   -- custom plugins
-  { import = 'custom.plugins' },
+  -- { import = 'custom.plugins' },
 }, {
   ui = {
     -- If you have a Nerd Font, set icons to an empty table which will use the
