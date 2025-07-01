@@ -254,7 +254,26 @@ require('lazy').setup({
         yamlls = {},
         gopls = {},
         rust_analyzer = {},
-        ts_ls = {},
+        ts_ls = {
+          settings = {
+            javascript = {
+              format = {
+                semicolons = 'insert',
+              },
+              preferences = {
+                quoteStyle = 'single',
+              },
+            },
+            typescript = {
+              format = {
+                semicolons = 'insert',
+              },
+              preferences = {
+                quoteStyle = 'single',
+              },
+            },
+          },
+        },
         jdtls = {},
         -- elixirls = {},
         lua_ls = {
@@ -320,7 +339,7 @@ require('lazy').setup({
       formatters_by_ft = {
         lua = { 'stylua' },
         rust = { 'rust_analyzer' },
-        typescript = { 'tsserver' },
+        typescript = { 'ts_ls' },
         java = { 'jdtls' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
