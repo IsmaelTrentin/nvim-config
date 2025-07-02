@@ -9,4 +9,9 @@ return {
     i(1),
     t ');',
   }),
+  s('cerr', {
+    t 'console.error(',
+    i(1),
+    t ');',
+  }),
 }
