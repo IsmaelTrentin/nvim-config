@@ -7,6 +7,9 @@ return {
   },
   config = function()
     require('nvim-tree').setup {
+      view = {
+        width = 28,
+      },
       filters = {
         enable = true,
         custom = { '.git', '.DS_Store' },
