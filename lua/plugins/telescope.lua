@@ -48,16 +48,18 @@ return {
 
     -- See `:help telescope.builtin`
     local builtin = require 'telescope.builtin'
-    vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
-    vim.keymap.set('n', '<leader>wk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
-    vim.keymap.set('n', '<leader>f', builtin.find_files, { desc = 'Search [F]iles' })
-    vim.keymap.set('n', '<leader>st', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
-    vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
-    vim.keymap.set('n', '<leader>ss', builtin.live_grep, { desc = '[S]earch by [G]rep' })
-    vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
-    vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
-    vim.keymap.set('n', '<leader>so', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-    vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+    vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = 'Telescope: [S]earch [H]elp' })
+    vim.keymap.set('n', '<leader>wk', builtin.keymaps, { desc = 'Telescope: Search Keymaps ([W]ich [K]ey)' })
+    vim.keymap.set('n', '<leader>f', builtin.find_files, { desc = 'Telescope: Search [F]iles' })
+    vim.keymap.set('n', '<leader>st', builtin.builtin, { desc = 'Telescope: [S]earch [S]elect Telescope' })
+    vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = 'Telescope: [S]earch current [W]ord' })
+    vim.keymap.set('n', '<leader>sS', builtin.live_grep, { desc = 'Telescope: [S]earch by Grep' })
+    vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = 'Telescope: [S]earch [D]iagnostics' })
+    vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = 'Telescope: [S]earch [R]esume' })
+    vim.keymap.set('n', '<leader>so', builtin.oldfiles, { desc = 'Telescope: [S]earch Recent Files ("." for repeat)' })
+    vim.keymap.set('n', '<leader>ss', builtin.lsp_document_symbols, { desc = 'Telescope: [S]earch Document [S]ymbols' })
+    vim.keymap.set('n', '<leader>sm', builtin.marks, { desc = 'Telescope: [S]earch [M]arks' })
+    vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = 'Telescope: [ ] Find existing buffers' })
 
     -- Slightly advanced example of overriding default behavior and theme
     vim.keymap.set('n', '<leader>/', function()
