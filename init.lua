@@ -66,6 +66,7 @@ vim.opt.shiftwidth = 4
 -- line wrapping
 vim.opt.wrap = false
 
+-- TODO: move to keybinds file/each plugin file
 -- [[ Keymaps ]]
 
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
@@ -100,6 +101,20 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 -- Custom
 vim.keymap.set('n', '<C-w>', ':bd<Enter>', { desc = 'Close current buffer' })
+
+-- Snacks
+vim.keymap.set('n', '<leader>lg', function()
+  require('snacks').lazygit.open()
+end, { desc = 'Snacks: open lazygit' })
+vim.keymap.set('n', '<leader>t', function()
+  require('snacks').terminal.open(nil, { win = { position = 'float' } })
+end, { desc = 'Snacks: open floating terminal' })
+vim.keymap.set('n', '<leader>z', function()
+  require('snacks').zen()
+end, { desc = 'Snacks: toggle zen mode' })
+vim.keymap.set('n', '<leader>1', function()
+  require('snacks').explorer.open()
+end, { desc = 'Snacks: toggle file explorer' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
