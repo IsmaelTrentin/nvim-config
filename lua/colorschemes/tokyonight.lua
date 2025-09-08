@@ -1,3 +1,6 @@
+-- theme config
+-- https://github.com/folke/tokyonight.nvim/blob/main/extras/lua/tokyonight_moon.lua
+
 return {
   -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`
   'folke/tokyonight.nvim',
@@ -6,9 +9,12 @@ return {
   config = function()
     require('tokyonight').setup {
       style = 'moon',
-      transparent = false,
+      -- https://github.com/xiyaowong/transparent.nvim
+      transparent = vim.g.transparent_enabled,
 
       on_colors = function(colors)
+        -- set terminal to #14141a
+        -- opacity 0.91
         colors.bg = '#1a1b26'
         colors.bg_float = '#1c1e2d'
         colors.purple = '#ae81ff'
