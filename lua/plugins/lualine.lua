@@ -1,5 +1,6 @@
 -- status line
 
+-- edited components
 local custom_location = {
   'location',
   -- uses the base location component but adds '/<#lines>'
@@ -8,6 +9,29 @@ local custom_location = {
     local n_lines = vim.api.nvim_buf_line_count(0)
     return str:sub(0, upper_bound) .. '/' .. n_lines
   end,
+}
+
+-- custom components
+local theme_colors = require('tokyonight.colors').setup()
+local timers_comp = {
+  function()
+    local manager = require 'timers.manager'
+    local active_count = manager.active_timers_num()
+
+    if active_count == 0 then
+      return ''
+    end
+
+    local closest = manager.get_closest_timer()
+    local remaining = closest:expire_in()
+
+    local output = ' | '
+    if closest.title == 'timers.nvim' then
+      return output .. remaining:into_hms()
+    end
+    return output .. closest.title .. ': ' .. remaining:into_hms()
+  end,
+  color = { fg = theme_colors.dark3 },
 }
 
 -- status line sections config
@@ -23,7 +47,7 @@ local sections_config = {
       'selectioncount',
       'diagnostics',
     },
-    lualine_x = { 'buffers' },
+    lualine_x = { 'buffers', timers_comp },
     lualine_y = { 'lsp_status' },
     lualine_z = { 'filetype' },
   },
