@@ -1,7 +1,3 @@
-vim.keymap.set('n', '<leader>ee', function()
-  require('oil').open_float(nil, { preview = { vertical = true } })
-end, { desc = 'oil: open float with preview' })
-
 return {
   'stevearc/oil.nvim',
   ---@module 'oil'
@@ -20,4 +16,13 @@ return {
       },
     }
   end,
+  keys = {
+    {
+      '<leader>ee',
+      function()
+        require('oil').open_float(nil, { preview = { vertical = true } })
+      end,
+      { desc = 'oil: open float with preview' },
+    },
+  },
 }

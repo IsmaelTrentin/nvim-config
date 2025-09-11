@@ -19,6 +19,27 @@ return {
           vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
         end
 
+        -- KEYMAPS
+
+        -- Diagnostic
+        vim.diagnostic.config {
+          virtual_text = true,
+          signs = true,
+          underline = true,
+          update_in_insert = true, -- This avoids too-aggressive diagnostics while typing
+          severity_sort = true,
+        }
+        vim.api.nvim_create_autocmd({ 'InsertLeave', 'TextChanged' }, {
+          callback = function()
+            vim.diagnostic.setloclist { open = false }
+          end,
+        })
+
+        -- Diagnostic keymaps
+        map('[d', vim.diagnostic.goto_prev, 'Go to previous [D]iagnostic message')
+        map(']d', vim.diagnostic.goto_next, 'Go to next [D]iagnostic message')
+        map('<leader>e', vim.diagnostic.open_float, 'Show diagnostic [E]rror messages')
+        map('<leader>q', vim.diagnostic.setloclist, 'Open diagnostic [Q]uickfix list')
         -- Jump to the definition of the word under your cursor.
         --  This is where a variable was first declared, or where a function is defined, etc.
         --  To jump back, press <C-T>.

@@ -51,7 +51,7 @@ return {
     vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = 'Telescope: [S]earch [H]elp' })
     vim.keymap.set('n', '<leader>wk', builtin.keymaps, { desc = 'Telescope: Search Keymaps ([W]ich [K]ey)' })
     vim.keymap.set('n', '<leader>f', builtin.find_files, { desc = 'Telescope: Search [F]iles' })
-    vim.keymap.set('n', '<leader>st', builtin.builtin, { desc = 'Telescope: [S]earch [S]elect Telescope' })
+    vim.keymap.set('n', '<leader>st', '<cmd>TodoTelescope keywords=TODO,FIX<cr>', { desc = 'Telescope: [S]earch [T]odos Comments' })
     vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = 'Telescope: [S]earch current [W]ord' })
     vim.keymap.set('n', '<leader>sS', builtin.live_grep, { desc = 'Telescope: [S]earch by Grep' })
     vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = 'Telescope: [S]earch [D]iagnostics' })
@@ -68,7 +68,7 @@ return {
         winblend = 10,
         previewer = false,
       })
-    end, { desc = '[/] Fuzzily search in current buffer' })
+    end, { desc = 'Telescope: [/] Fuzzily search in current buffer' })
 
     -- Also possible to pass additional configuration options.
     --  See `:help telescope.builtin.live_grep()` for information about particular keys
@@ -77,11 +77,11 @@ return {
         grep_open_files = true,
         prompt_title = 'Live Grep in Open Files',
       }
-    end, { desc = '[S]earch [/] in Open Files' })
+    end, { desc = 'Telescope: [S]earch [/] in Open Files' })
 
     -- Shortcut for searching your neovim configuration files
     vim.keymap.set('n', '<leader>sn', function()
       builtin.find_files { cwd = vim.fn.stdpath 'config' }
-    end, { desc = '[S]earch [N]eovim files' })
+    end, { desc = 'Telescope: [S]earch [N]eovim files' })
   end,
 }

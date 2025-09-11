@@ -119,7 +119,39 @@ return {
       function()
         require('snacks').notifier.show_history(nil)
       end,
-      'snacks.notifier: show history',
+      desc = 'snacks.notifier: show history',
+    },
+    -- lazygit
+    {
+      '<leader>lg',
+      function()
+        require('snacks').lazygit.open()
+      end,
+      desc = 'snacks.lazygit: open lazygit',
+    },
+    -- terminal
+    {
+      '<leader>t',
+      function()
+        require('snacks').terminal.open(nil, { win = { position = 'float' } })
+      end,
+      desc = 'snacks.terminal: open floating terminal',
+    },
+    -- zen
+    {
+      '<leader>z',
+      function()
+        require('snacks').zen()
+      end,
+      desc = 'snacks.zen: toggle zen mode',
+    },
+    -- explorer
+    {
+      '<leader>1',
+      function()
+        require('snacks').explorer.open()
+      end,
+      desc = 'snacks.explorer: toggle file explorer',
     },
   },
 }
