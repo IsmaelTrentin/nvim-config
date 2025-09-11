@@ -5,5 +5,9 @@ return {
   dependencies = {
     'nvim-lua/plenary.nvim',
   },
-  opts = { signs = false },
+  opts = { signs = true },
+  keys = {
+    -- search todos is binded in Telescope config
+    { '<leader>L', '<cmd>TodoLocList<cr>', desc = 'todo-comments: open todos location list' },
+  },
 }
