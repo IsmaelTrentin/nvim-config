@@ -131,6 +131,7 @@ return {
       lua_ls = require 'lsp.lua_ls',
       yamlls = require 'lsp.yamlls',
       gopls = require 'lsp.gopls',
+      clangd = {},
     }
 
     require('mason').setup()
