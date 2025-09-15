@@ -5,7 +5,7 @@ local custom_location = {
   'location',
   -- uses the base location component but adds '/<#lines>'
   fmt = function(str)
-    local upper_bound = math.max(0, string.len(str) - 1)
+    local upper_bound = math.max(0, string.len(str))
     local n_lines = vim.api.nvim_buf_line_count(0)
     return str:sub(0, upper_bound) .. '/' .. n_lines
   end,
