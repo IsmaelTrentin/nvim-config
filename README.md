@@ -2,4 +2,4 @@
 
 My neovim config starting from the **kickstarter** repo.
 
-![prewview](./preview.png)
+![preview](./preview.jpg)
