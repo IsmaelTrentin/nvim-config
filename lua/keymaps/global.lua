@@ -15,3 +15,7 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = DESC_PREFIX .. 'Move focus t
 
 -- Custom
 vim.keymap.set('n', '<C-w>', ':bd<Enter>', { desc = DESC_PREFIX .. 'Close current buffer' })
+
+-- Editor
+vim.keymap.set('n', '∆', ':m +1<Enter>', { desc = DESC_PREFIX .. 'swap line down' })
+vim.keymap.set('n', '˚', ':m -2<Enter>', { desc = DESC_PREFIX .. 'swap line up' })
