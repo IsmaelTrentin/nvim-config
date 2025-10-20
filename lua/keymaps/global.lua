@@ -16,6 +16,9 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = DESC_PREFIX .. 'Move focus t
 -- Custom
 vim.keymap.set('n', '<C-w>', ':bd<Enter>', { desc = DESC_PREFIX .. 'Close current buffer' })
 
--- Editor
+-- [[ Editor ]]
 vim.keymap.set('n', '∆', ':m +1<Enter>', { desc = DESC_PREFIX .. 'swap line down' })
 vim.keymap.set('n', '˚', ':m -2<Enter>', { desc = DESC_PREFIX .. 'swap line up' })
+-- tabs and spaces
+vim.keymap.set('n', '<leader><C-4>', ':set shiftwidth=4 <Enter>:set tabstop=4 <Enter>:set expandtab <Enter>:ret <Enter>', { desc = DESC_PREFIX .. 'indent 4' })
+vim.keymap.set('n', '<leader><C-2>', ':set shiftwidth=2 <Enter>:set tabstop=2 <Enter>:set expandtab <Enter>:ret <Enter>', { desc = DESC_PREFIX .. 'indent 2' })
