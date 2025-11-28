@@ -22,3 +22,5 @@ vim.keymap.set('n', '˚', ':m -2<Enter>', { desc = DESC_PREFIX .. 'swap line up'
 -- tabs and spaces
 vim.keymap.set('n', '<leader><C-4>', ':set shiftwidth=4 <Enter>:set tabstop=4 <Enter>:set expandtab <Enter>:ret <Enter>', { desc = DESC_PREFIX .. 'indent 4' })
 vim.keymap.set('n', '<leader><C-2>', ':set shiftwidth=2 <Enter>:set tabstop=2 <Enter>:set expandtab <Enter>:ret <Enter>', { desc = DESC_PREFIX .. 'indent 2' })
+-- previous
+vim.keymap.set('n', '<leader>P', ':e #<Enter>', { desc = DESC_PREFIX .. 'goto previous file' })
