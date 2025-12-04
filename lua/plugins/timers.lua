@@ -3,6 +3,7 @@ return {
   version = '*', -- use latest stable release
   -- See below, empty is fine
   opts = {},
+  enabled = false,
   keys = {
     { '<leader>T', '', desc = '+timers' },
     {
