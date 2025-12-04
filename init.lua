@@ -60,11 +60,17 @@ vim.opt.scrolloff = 15
 -- indentation
 vim.opt.expandtab = true
 vim.opt.smartindent = true
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
 
 -- line wrapping
 vim.opt.wrap = false
+
+-- folding
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+-- prevents all folds closed when opening a file
+vim.opt.foldlevelstart = 99
 
 -- load custom keymaps
 require 'keymaps.global'
