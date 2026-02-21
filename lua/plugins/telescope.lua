@@ -31,8 +31,10 @@ return {
       preview = true,
       defaults = {
         file_ignore_patterns = {
-          'node_modules',
           '\\.git',
+          '\\.idea',
+          'node_modules',
+          'build',
         },
       },
       extensions = {
