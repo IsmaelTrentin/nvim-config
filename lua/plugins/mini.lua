@@ -1,9 +1,7 @@
 -- NOTE: this is super useful but clashes with `leap`.
-
-return {}
-
---[[
-return { -- Collection of various small independent plugins/modules
+-- Collection of various small independent plugins/modules
+return {
+  enabled = false,
   'echasnovski/mini.nvim',
   config = function()
     -- Better Around/Inside textobjects
@@ -25,4 +23,3 @@ return { -- Collection of various small independent plugins/modules
     --  Check out: https://github.com/echasnovski/mini.nvim
   end,
 }
---]]
